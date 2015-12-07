@@ -1,0 +1,24 @@
+{
+  "name": "capriccioso",
+  "version": "0.1.0",
+  "description": "capriccioso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djtango/capriccioso.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djtango/capriccioso/issues"
+  },
+  "homepage": "https://github.com/djtango/capriccioso#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "http": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
