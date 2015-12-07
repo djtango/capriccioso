@@ -1,0 +1,24 @@
+{
+  "name": "capriccioso",
+  "description": "capriccioso",
+  "main": "index.js",
+  "authors": [
+    "Deon Tan <deonjtan@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/djtango/capriccioso",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "angular-resource": "~1.4.8"
+  }
+}
