@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+}
+header > * {
+  text-align: center;
+}
+
+header {
+  background-color: #262626;
+  color: #cccccc;
+  padding: 40px 0;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Optima, Times;
+}
+
+main {
+  padding: 150px 0;
+  text-align: center;
+}

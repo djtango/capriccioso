@@ -1,1 +1,27 @@
-Capriccioso!
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Capriccioso</title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="public/bower_components/angular/angular.js"></script>
+    <script src="public/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="public/js/app.js"></script>
+    <link rel="stylesheet" href="public/application.css">
+  </head>
+  <body>
+    <header>
+      <h1>Capriccioso</h1>
+      <h3>Whimsical and fanciful in character.</h3>
+    </header>
+    <main>
+      <button>Play</button>
+      <form>
+        <input type="text">
+      </form>
+      <div id="answer_status">
+        <span ng-show="correct">Correct!</span>
+      </div>
+    </main>
+  </body>
+</html>
