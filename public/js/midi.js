@@ -10,22 +10,21 @@ capri.factory('MidiPlayer', function(){
           var note2 = note1 + intervalAbove;
           // var instrument = 0;
           // play the note
-          self.callNote(0, note1);
-          self.callNote(1, note2);
+          self.callNote(0, note1, MIDI);
+          self.callNote(1, note2, MIDI);
         }
-      })
+      });
     },
 
-    callNote: function (channel, note) {
-      console.log('callNote')
+    callNote: function (channel, note, midi) {
       var velocity = 127; // how hard the note hits
       var instrument = 0;
       var noteStart = 0;
       var noteEnd = 1.5;
-      MIDI.programChange(channel, instrument);
-      MIDI.setVolume(channel, velocity);
-      MIDI.noteOn(channel, note, velocity, noteStart);
-      MIDI.noteOff(channel, note, noteEnd);
+      midi.programChange(channel, instrument);
+      midi.setVolume(channel, velocity);
+      midi.noteOn(channel, note, velocity, noteStart);
+      midi.noteOff(channel, note, noteEnd);
     },
 
     intervals: {
@@ -41,5 +40,5 @@ capri.factory('MidiPlayer', function(){
       10: 'Minor 7th',
       11: 'Major 7th'
     }
-  }
+  };
 });
