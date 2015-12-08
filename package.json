@@ -20,5 +20,8 @@
     "express": "^4.13.3",
     "http": "0.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "html-server": "^0.1.1"
   }
 }
