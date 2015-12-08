@@ -7,23 +7,25 @@ capri.factory('MidiPlayer', function(){
         instrument: "acoustic_grand_piano",
         onsuccess: function() {
           console.log('success');
-          var delay = 0; // play one note every quarter second
           var note2 = note1 + intervalAbove;
-          var velocity = 127; // how hard the note hits
           // var instrument = 0;
           // play the note
-          self.callNote(0, note1, velocity, 0);
-          self.callNote(1, note2, velocity, 0);
+          self.callNote(0, note1);
+          self.callNote(1, note2);
         }
       })
     },
 
-    callNote: function (channel,note,velocity,instrument){
+    callNote: function (channel, note) {
       console.log('callNote')
+      var velocity = 127; // how hard the note hits
+      var instrument = 0;
+      var noteStart = 0;
+      var noteEnd = 1.5;
       MIDI.programChange(channel, instrument);
-      MIDI.setVolume(channel,velocity);
-      MIDI.noteOn(channel,note,velocity,0);
-      MIDI.noteOff(channel,note,1.5);
+      MIDI.setVolume(channel, velocity);
+      MIDI.noteOn(channel, note, velocity, noteStart);
+      MIDI.noteOff(channel, note, noteEnd);
     },
 
     intervals: {
