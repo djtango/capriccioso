@@ -25,11 +25,9 @@
     </header>
     <main>
       <button ng-click="capriCtrl.playNotes()">Play</button>
-      <form>
-        <input type="text">
-      </form>
+        <input type="text" ng-model="capriCtrl.enteredString">
       <div id="answer_status">
-        <span ng-show="correct">Correct!</span>
+        <span ng-show="capriCtrl.isAnswerCorrect()">Correct!</span>
       </div>
     </main>
   </body>

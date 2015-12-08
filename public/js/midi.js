@@ -3,21 +3,25 @@ var playInterval = (function (note1,intervalAbove) {
     soundfontUrl: "./js/midi/instruments/",
     instrument: "acoustic_grand_piano",
     onsuccess: function() {
+      console.log('success');
       var delay = 0; // play one note every quarter second
       var note2 = note1 + intervalAbove;
       var velocity = 127; // how hard the note hits
-      var instrument = 0;
+      // var instrument = 0;
       // play the note
-      callNote(0,note1,velocity,instrument);
-      callNote(1,note2,velocity,instrument);
+      callNote(0,note1,velocity,0);
+      callNote(1,note2,velocity,0);
     }
-  });
+  })
+});
+
 function callNote(channel,note,velocity,instrument){
+  console.log('callNote')
   MIDI.programChange(channel, instrument);
   MIDI.setVolume(channel,velocity);
   MIDI.noteOn(channel,note,velocity,0);
   MIDI.noteOff(channel,note,1.5);
-});
+};
 
 var intervals = {
   'Minor 2nd': 1,
