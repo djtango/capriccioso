@@ -6,17 +6,20 @@ header > * {
 }
 
 header {
-  background-color: #262626;
-  color: #cccccc;
-  padding: 40px 0;
+  background-color: #2c3e50;
+  color: #F8F8F8;
+  padding: 2.5em 0;
 }
 
 h1 {
-  font-size: 52px;
+  font-size: 3.25em;
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: light;
+  color: #F8F8F8;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,6 +27,159 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
-  padding: 150px 0;
+  padding: 2.375em 0;
   text-align: center;
+}
+
+
+
+
+#answer_container {
+    padding: 1.25em 0;
+}
+
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+body {
+  background: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+
+.play {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 60px solid #2c3e50;
+  margin: 100px auto 50px auto;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  left: 10px;
+}
+.play:before {
+  content: '';
+  position: absolute;
+  top: -75px;
+  left: -114px;
+  bottom: -75px;
+  right: -35px;
+  border-radius: 50%;
+  border: 10px solid #2c3e50;
+  z-index: 2;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+}
+.play:after {
+  content: '';
+  opacity: 0;
+  transition: opacity 0.6s;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+}
+.play:hover:before, .play:focus:before {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+}
+.play.active {
+  border-color: transparent;
+}
+.play.active:after {
+  content: '';
+  opacity: 1;
+  width: 50px;
+  height: 80px;
+  background: #2c3e50;
+  position: absolute;
+  right: 5px;
+  top: -40px;
+  border-left: 20px solid #2c3e50;
+  box-shadow: inset 30px 0 0 0 #f9f9f9;
+}
+
+
+
+
+
+/*Main button class
+==========================*/
+.ph-button {
+
+    border-style: solid;
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    padding: 19px 39px 18px;
+    font-size: 18px;
+
+}
+/*Green
+==========================*/
+.ph-btn-1 {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+
+}
+.ph-btn-1:hover, .ph-btn-1:focus, .ph-btn-1:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
+}
+
+/*Blue
+==========================*/
+.ph-btn-2 {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+}
+
+.ph-btn-2:hover, .ph-btn-2:focus, .ph-btn-2:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
+}
+
+/*Grey
+==========================*/
+.ph-btn-3 {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+}
+.ph-btn-3:hover, .ph-btn-3:focus, .ph-btn-3:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
+}
+
+/*Answer 4
+==========================*/
+.ph-btn-4 {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+}
+.ph-btn-4:hover, .ph-btn-4:focus, .ph-btn-4:active {
+    background: none repeat scroll 0 0 #688aac;
+    border-color: #2c3e50;
 }
