@@ -31,6 +31,14 @@ main {
   text-align: center;
 }
 
+.correct {
+  background-color: green !important;
+}
+
+.incorrect {
+  background-color: red !important;
+}
+
 #logged-in-username {
   position: absolute;
   top: 1em;

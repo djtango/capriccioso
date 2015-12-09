@@ -1,5 +1,5 @@
 capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
- '$scope', '$interval', function(MidiPlayer, Points, Timer, $scope, $interval) {
+ '$scope', '$interval', '$timeout', function(MidiPlayer, Points, Timer, $scope, $interval, $timeout) {
 
   var self = this;
   var intervalsValues;
@@ -31,6 +31,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   self.newInterval = function() {
+    self.correctButton = 0;
     self.currentNote = self.genNote();
     self.currentInterval = self.genInterval();
     self.setAnswer();
@@ -41,13 +42,29 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
 
   self.supplyAnswer = function() {
     if (self.isAnswerCorrect()) {
-      self.newInterval();
-      Points.changePoints(+1);
+      self.correctButton = self.clickedButton;
+      $timeout(self.resetButtons, 1000);
       return true;
     } else {
+      self.incorrectButton = self.clickedButton;
       Points.changePoints(-1);
       return false;
     }
+  };
+
+  self.resetButtons = function() {
+    self.correctButton = 0;
+    self.incorrectButton = 0;
+    self.newInterval();
+    Points.changePoints(+1);
+  };
+
+  self.isButtonCorrect = function(buttonNumber) {
+    return buttonNumber === self.correctButton;
+  };
+
+  self.isButtonIncorrect = function(buttonNumber) {
+    return buttonNumber === self.incorrectButton;
   };
 
   self.randomAnswers = function() {
@@ -61,9 +78,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
 
   self.clickAnswer = function(num) {
     var playerAnswer = "answer" + num;
+    self.clickedButton = num;
     self.enteredAnswer = self.randomAnswers()[playerAnswer];
     self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
-    console.log('answerStatus:' + self.answerStatus)
   };
 
   self.populateAnswers = function() {
