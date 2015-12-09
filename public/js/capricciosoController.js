@@ -1,4 +1,4 @@
-capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(MidiPlayer, $scope) {
+capri.controller('CapricciosoController', ['MidiPlayer', 'Points', '$scope', function(MidiPlayer, Points, $scope) {
   var self = this;
   var intervalsValues;
   var multipleChoice;
@@ -7,6 +7,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(Midi
   self.playNotes = function() {
     console.log('click');
     MidiPlayer.playInterval(self.currentNote, self.currentInterval);
+    self.answerStatus = ""
   };
 
   self.genNote = function() {
@@ -42,8 +43,12 @@ capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(Midi
   self.supplyAnswer = function() {
     if (self.isAnswerCorrect()) {
       self.newInterval();
+      Points.changePoints(+1);
+      console.log('Correct! Points:' + Points.pointsTotal);
       return true;
     } else {
+      Points.changePoints(-1);
+      console.log('Wrong!, Points:' + Points.pointsTotal);
       return false;
     }
   };
@@ -60,7 +65,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(Midi
   self.clickAnswer = function(num) {
     var playerAnswer = "answer" + num;
     self.enteredAnswer = self.randomAnswers()[playerAnswer];
-    self.supplyAnswer();
+    self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
   };
 
   self.populateAnswers = function() {
