@@ -11,6 +11,7 @@
     <script src="js/app.js"></script>
     <script src="js/capricciosoController.js"></script>
     <script src="js/pointsFactory.js"></script>
+    <script src="js/timerFactory.js"></script>
     <script src="js/midi.js"></script>
     <script src="js/midi/audioDetect.js"></script>
     <script src="js/midi/plugin.webmidi.js"></script>
@@ -79,6 +80,10 @@
 
       <div id="points_total">
         <span ng-bind="pointsFactory.pointsTotal"></span>
+      </div>
+
+      <div id="time_left">
+        <span ng-bind="timerFactory.timeLeft"></span>
       </div>
 
     </main>

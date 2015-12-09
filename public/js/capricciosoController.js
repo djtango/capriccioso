@@ -1,14 +1,19 @@
-capri.controller('CapricciosoController', ['MidiPlayer', 'Points', '$scope', function(MidiPlayer, Points, $scope) {
+capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
+ '$scope', '$interval', function(MidiPlayer, Points, Timer, $scope, $interval) {
+
   var self = this;
   var intervalsValues;
   var multipleChoice;
   var intervals;
   $scope.pointsFactory = Points;
+  $scope.timerFactory = Timer;
 
   self.playNotes = function() {
     console.log('click');
     MidiPlayer.playInterval(self.currentNote, self.currentInterval);
     self.answerStatus = "";
+    Timer.turnOn();
+    console.log('Timer:' + Timer.timeLeft);
   };
 
   self.genNote = function() {
@@ -111,14 +116,10 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', '$scope', fun
     });
   };
 
-  // self.objectValuesArray = function(object) {
-  //   var array = [];
-  //   for (var o in object) {
-  //     array.push(object[o]);
-  //   }
-  //   return array;
-  // };
 
+  $interval(function(){ Timer.countdown(); }, 1000);
+
+//runs when you start the app in browser
   $scope.init = function() {
     console.log('$scope.init');
     self.newInterval();
