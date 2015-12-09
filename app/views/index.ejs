@@ -4,24 +4,14 @@
     <% include ../views/partials/head %>
 </head>
 
-
-
 <body>
   <header>
     <% include ../views/partials/header %>
   </header>
 
-
-
-
   <main>
-    <% if ( user ) { %>
-		<h2>Hello <%=user%> </h2>
-		<a class="ph-button ph-btn-index" href="/logout">Logout</a>
-	<% } else { %>
 		<a class="ph-button ph-btn-index" href="/register">Register</a>
     <a class="ph-button ph-btn-index" href="/login">Login</a>
-	<% } %>
   </main>
 </body>
 </html>

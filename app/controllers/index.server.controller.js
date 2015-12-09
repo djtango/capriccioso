@@ -1,6 +1,11 @@
 exports.render = function(req, res) {
-    res.render('index', {
-    	title: 'Capriccioso',
-    	user: req.user ? req.user.username : ''
+  if (req.user) {
+    res.redirect('/play', {
+      user: req.user.username
     });
+  } else {
+    res.render('index', {
+      user: ''
+    });
+  }
 };

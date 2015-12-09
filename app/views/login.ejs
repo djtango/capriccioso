@@ -8,10 +8,8 @@
     <% include ../views/partials/header %>
   </header>
 
-
     <div>
         <form action="/login" method="post">
-
 
             <p style="padding-top: 2em">
               <label for="username"></label>
@@ -29,11 +27,7 @@
           </form>
     </div>
 
-    <% for(var i in messages) { %>
-        <div class="flash">
-            <%= messages[i] %>
-        </div>
-    <% } %>
-</div>
+    <% include ../views/partials/flash %>
+
 </body>
 </html>
