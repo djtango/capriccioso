@@ -3,11 +3,12 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', '$scope', fun
   var intervalsValues;
   var multipleChoice;
   var intervals;
+  $scope.pointsFactory = Points;
 
   self.playNotes = function() {
     console.log('click');
     MidiPlayer.playInterval(self.currentNote, self.currentInterval);
-    self.answerStatus = ""
+    self.answerStatus = "";
   };
 
   self.genNote = function() {
