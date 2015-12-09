@@ -16,14 +16,18 @@
 
         <div class="ph-float">
           <a class='ph-button ph-btn-1'
-            ng-click="capriCtrl.clickAnswer(1)">
+            ng-click="capriCtrl.clickAnswer(1)"
+            ng-class="{correct:capriCtrl.isButtonCorrect(1),
+                       incorrect:capriCtrl.isButtonIncorrect(1)}">
             <span ng-bind="capriCtrl.randomAnswers().answer1"></span>
           </a>
         </div>
 
         <div class="ph-float">
           <a class='ph-button ph-btn-2'
-            ng-click="capriCtrl.clickAnswer(2)">
+            ng-click="capriCtrl.clickAnswer(2)"
+            ng-class="{correct:capriCtrl.isButtonCorrect(2),
+                       incorrect:capriCtrl.isButtonIncorrect(2)}">
             <span ng-bind="capriCtrl.randomAnswers().answer2"></span>
           </a>
         </div>
@@ -34,14 +38,18 @@
 
         <div class="ph-float">
           <a class='ph-button ph-btn-3'
-            ng-click="capriCtrl.clickAnswer(3)">
+            ng-click="capriCtrl.clickAnswer(3)"
+            ng-class="{correct:capriCtrl.isButtonCorrect(3),
+                       incorrect:capriCtrl.isButtonIncorrect(3)}">
             <span ng-bind="capriCtrl.randomAnswers().answer3"></span>
           </a>
         </div>
 
         <div class="ph-float">
           <a class='ph-button ph-btn-4'
-            ng-click="capriCtrl.clickAnswer(4)">
+            ng-click="capriCtrl.clickAnswer(4)"
+            ng-class="{correct:capriCtrl.isButtonCorrect(4),
+                       incorrect:capriCtrl.isButtonIncorrect(4)}">
             <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
           </a>
         </div>
