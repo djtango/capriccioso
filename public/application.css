@@ -31,13 +31,28 @@ main {
   text-align: center;
 }
 
+#logged-in-username {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+}
 
+#logout-btn {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  padding-top: 0.2em;
+  padding-bottom: 0.25em;
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  font-size: 1em;
+}
 
 
 .flash {
   color: red;
   font-style: italic;
-
+  font-size: 0.75em;
 }
 
 

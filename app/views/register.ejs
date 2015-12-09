@@ -7,28 +7,22 @@
   <header>
     <% include ../views/partials/header %>
   </header>
-    <% for(var i in messages) { %>
-    <div class="flash"><%= messages[i] %></div>
-    <% } %>
-
+  
     <div>
         <form action="/register" method="post">
-            <h2>Register</h2>
 
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" required autofocus>
+            <p><input type="text" id="username" name="username" placeholder="Username" required autofocus></p>
 
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Name" required autofocus>
+            <p><input type="email" id="email" name="email" placeholder="E-mail" required></p>
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <p><input type="password" name="password" id="password" placeholder="Password" required></p>
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <p><button type="submit">Register</button></p>
 
-            <button type="submit">Register</button>
           </form>
     </div>
+
+    <% include ../views/partials/flash %>
+
 </body>
 </html>
