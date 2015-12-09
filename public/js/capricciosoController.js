@@ -119,10 +119,8 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
 
   $interval(function(){ Timer.countdown(); }, 1000);
 
-//runs when you start the app in browser
-  $scope.init = function() {
+  $scope.init = (function() {
     console.log('$scope.init');
     self.newInterval();
-  };
-  $scope.init();
+  })();
 }]);

@@ -1,10 +1,15 @@
-var express = require('express');
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+var config = require('./config/config');
+var	mongoose = require('./config/mongoose');
+var	express = require('./config/express');
+var	passport = require('./config/passport');
+
+var db = mongoose();
 var app = express();
-var server = require('http').createServer(app).listen(8080);
-var path = require('path');
+var	passport = passport();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.listen(config.port);
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+module.exports = app;
+console.log(process.env.NODE_ENV + ' server running at http://localhost:' + config.port);

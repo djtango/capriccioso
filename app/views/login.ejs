@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../views/partials/head %>
+</head>
+<body>
+  <header>
+    <% include ../views/partials/header %>
+  </header>
+
+    <div>
+        <form action="/login" method="post">
+
+            <p style="padding-top: 2em">
+              <label for="username"></label>
+              <input type="text" name="username" id="username" placeholder="Username" required autofocus>
+            </p>
+
+            <p>
+              <label for="password"></label>
+              <input type="password" name="password" id="password" placeholder="Password">
+            </p>
+
+            <p>
+              <button type="submit">Login</button>
+            </p>
+          </form>
+    </div>
+
+    <% include ../views/partials/flash %>
+
+</body>
+</html>
