@@ -18,6 +18,7 @@
   "homepage": "https://github.com/djtango/capriccioso#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
     "express": "^4.13.3",
     "http": "0.0.0",
     "kerberos": "0.0.17",
