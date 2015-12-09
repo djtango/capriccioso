@@ -1,6 +1,6 @@
-capri.factory('MidiPlayer', function(){
+capri.factory('MidiPlayer', function() {
   return {
-    playInterval: function (note1, intervalAbove) {
+    playInterval: function(note1, intervalAbove) {
       var self = this;
       MIDI.loadPlugin({
         soundfontUrl: "./js/midi/instruments/",
@@ -16,7 +16,7 @@ capri.factory('MidiPlayer', function(){
       });
     },
 
-    callNote: function (channel, note, midi) {
+    callNote: function(channel, note, midi) {
       var velocity = 127; // how hard the note hits
       var instrument = 0;
       var noteStart = 0;
@@ -39,6 +39,19 @@ capri.factory('MidiPlayer', function(){
       9: 'Major 6th',
       10: 'Minor 7th',
       11: 'Major 7th'
-    }
+    },
+
+    intervalNamesArray: ['Minor 2nd',
+      'Major 2nd',
+      'Minor 3rd',
+      'Major 3rd',
+      'Perfect 4th',
+      'Augmented 4th',
+      'Perfect 5th',
+      'Minor 6th',
+      'Major 6th',
+      'Minor 7th',
+      'Major 7th'
+    ]
   };
 });

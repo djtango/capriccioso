@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="application.css">
     <script src="js/app.js"></script>
     <script src="js/capricciosoController.js"></script>
+    <script src="js/pointsFactory.js"></script>
     <script src="js/midi.js"></script>
     <script src="js/midi/audioDetect.js"></script>
     <script src="js/midi/plugin.webmidi.js"></script>
@@ -60,7 +61,7 @@
 
         <div class="ph-float">
           <a class='ph-button ph-btn-4'
-            ng-click="capriCtrl.clickAnswers(4)">
+            ng-click="capriCtrl.clickAnswer(4)">
             <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
           </a>
         </div>
@@ -73,7 +74,11 @@
       <div id="answer_container"> </div>
 
       <div id="answer_status">
-        <span ng-show="capriCtrl.isAnswerCorrect()">Correct!</span>
+        <span ng-bind="capriCtrl.answerStatus"></span>
+      </div>
+
+      <div id="points_total">
+        <span ng-bind="pointsFactory.pointsTotal"></span>
       </div>
 
     </main>
