@@ -17,14 +17,13 @@ server.listen(config.port);
 console.log(process.env.NODE_ENV + ' server running at http://localhost:' + config.port);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.set('views', './app/views');
+app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
