@@ -11,7 +11,7 @@ module.exports = function() {
         {_id: id},
         '-password',
         function(err,user) {
-          done(user);
+          done(err, user);
         });
   });
 
