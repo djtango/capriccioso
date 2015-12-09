@@ -78,10 +78,10 @@ capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(Midi
     self.multipleChoice.push(self.correctAnswer);
 
     for (i = 0; i < 3; i++) {
-      var rand0to9 = Math.floor((Math.random() * (10 - i)));
-      var intervalToPush = self.intervalsValues[rand0to9];
+      var rand = Math.floor((Math.random() * (10 - i)));
+      var intervalToPush = self.intervalsValues[rand];
       self.multipleChoice.push(intervalToPush);
-      self.intervalsValues.splice(rand0to9,1);
+      self.intervalsValues.splice(rand,1);
     }
     self.shuffleArray(self.multipleChoice);
   };

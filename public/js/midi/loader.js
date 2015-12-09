@@ -66,7 +66,7 @@ MIDI.Player = MIDI.Player || {};
 				if (opts.targetFormat) {
 					var audioFormat = opts.targetFormat;
 				} else { // use best quality
-					var audioFormat = supports['audio/ogg'] ? 'ogg' : 'mp3';
+					var audioFormat = supports['audio/ogg'] ? 'mp3' : 'mp3';
 				}
 
 				/// load the specified plugin
