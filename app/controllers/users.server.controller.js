@@ -39,6 +39,7 @@ exports.renderLogin = function(req, res, next) {
 exports.renderRegister = function(req, res, next) {
     if (!req.user) {
         res.render('register', {
+            user: '',
             title: 'Register Form',
             messages: req.flash('error')
         });

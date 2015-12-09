@@ -63,6 +63,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     var playerAnswer = "answer" + num;
     self.enteredAnswer = self.randomAnswers()[playerAnswer];
     self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
+    console.log('answerStatus:' + self.answerStatus)
   };
 
   self.populateAnswers = function() {
