@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>
-        <%=title %>
-    </title>
+  <% include ../views/partials/head %>
 </head>
 <body>
+  <header>
+    <% include ../views/partials/header %>
+  </header>
+
+
+    <div>
+        <form action="/login" method="post">
+
+
+            <p style="padding-top: 2em">
+              <label for="username"></label>
+              <input type="text" name="username" id="username" placeholder="Username" required autofocus>
+            </p>
+
+            <p>
+              <label for="password"></label>
+              <input type="password" name="password" id="password" placeholder="Password">
+            </p>
+
+            <p>
+              <button type="submit">Login</button>
+            </p>
+          </form>
+    </div>
+
     <% for(var i in messages) { %>
         <div class="flash">
             <%= messages[i] %>
         </div>
     <% } %>
-
-    <div>
-        <form action="/login" method="post">
-            <h2 >Open, says me</h2>
-
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Username" required autofocus>
-
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password">
-
-            <button type="submit">Login</button>
-          </form>
-    </div>
 </div>
 </body>
 </html>

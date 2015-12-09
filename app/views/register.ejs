@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>
-        <%=title %>
-    </title>
+    <% include ../views/partials/head %>
 </head>
 <body>
+  <header>
+    <% include ../views/partials/header %>
+  </header>
     <% for(var i in messages) { %>
     <div class="flash"><%= messages[i] %></div>
     <% } %>

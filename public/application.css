@@ -34,6 +34,14 @@ main {
 
 
 
+.flash {
+  color: red;
+  font-style: italic;
+  
+}
+
+
+
 #answer_container {
     padding: 1.25em 0;
 }
@@ -134,7 +142,24 @@ body {
     font-size: 18px;
 
 }
-/*Green
+
+
+/*Login & Signup
+==========================*/
+
+.ph-btn-index {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+
+}
+.ph-btn-index:hover, .ph-btn-index:focus, .ph-btn-index:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
+}
+
+
+/*Answer 1
 ==========================*/
 .ph-btn-1 {
 
@@ -147,7 +172,7 @@ body {
     border-color: #2c3e50;
 }
 
-/*Blue
+/*Answer 2
 ==========================*/
 .ph-btn-2 {
 
@@ -160,7 +185,7 @@ body {
     border-color: #2c3e50;
 }
 
-/*Grey
+/*Answer 3
 ==========================*/
 .ph-btn-3 {
 
