@@ -38,12 +38,15 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     self.intervalsValues = self.copyArray(MidiPlayer.intervalNamesArray);
     self.populateAnswers();
     self.randomAnswers();
+    self.respondToClicks = true;
   };
 
   self.supplyAnswer = function() {
     if (self.isAnswerCorrect()) {
       self.correctButton = self.clickedButton;
-      $timeout(self.resetButtons, 1000);
+      self.respondToClicks = false;
+      console.log("Timeout called!");
+      $timeout(self.resetButtons, 5000);
       return true;
     } else {
       self.incorrectButton = self.clickedButton;
@@ -57,6 +60,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     self.incorrectButton = 0;
     self.newInterval();
     Points.changePoints(+1);
+    console.log("Timeout finished!");
   };
 
   self.isButtonCorrect = function(buttonNumber) {
@@ -77,10 +81,12 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   self.clickAnswer = function(num) {
-    var playerAnswer = "answer" + num;
-    self.clickedButton = num;
-    self.enteredAnswer = self.randomAnswers()[playerAnswer];
-    self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
+    if (self.respondToClicks) {
+      var playerAnswer = "answer" + num;
+      self.clickedButton = num;
+      self.enteredAnswer = self.randomAnswers()[playerAnswer];
+      self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
+    }
   };
 
   self.populateAnswers = function() {
