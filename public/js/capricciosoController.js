@@ -57,9 +57,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', '$scope', function(Midi
   };
 
 
-  $scope.init = function() {
+  $scope.init = (function() {
     console.log('$scope.init')
     self.newInterval();
-  };
-  $scope.init();
+  })();
+  // $scope.init();
 }]);

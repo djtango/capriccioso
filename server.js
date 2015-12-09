@@ -1,3 +1,5 @@
+var passport = require('./config/passport')();
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -21,6 +23,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
