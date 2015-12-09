@@ -6,7 +6,6 @@ capri.factory('MidiPlayer', function() {
         soundfontUrl: "./js/midi/instruments/",
         instrument: "acoustic_grand_piano",
         onsuccess: function() {
-          console.log('success');
           var note2 = note1 + intervalAbove;
           // var instrument = 0;
           // play the note

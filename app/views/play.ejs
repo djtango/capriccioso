@@ -41,7 +41,7 @@
 
         <div class="ph-float">
           <a class='ph-button ph-btn-4'
-            ng-click="capriCtrl.clickAnswers(4)">
+            ng-click="capriCtrl.clickAnswer(4)">
             <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
           </a>
         </div>
@@ -54,7 +54,15 @@
       <div id="answer_container"> </div>
 
       <div id="answer_status">
-        <span ng-show="capriCtrl.isAnswerCorrect()">Correct!</span>
+        <span ng-show="capriCtrl.answerStatus">Correct!</span>
+      </div>
+
+      <div id="points_total">
+        <span ng-bind="pointsFactory.pointsTotal"></span>
+      </div>
+
+      <div id="time_left">
+        <span ng-bind="timerFactory.timeLeft"></span>
       </div>
 
     </main>

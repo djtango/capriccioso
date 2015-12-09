@@ -9,11 +9,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   $scope.timerFactory = Timer;
 
   self.playNotes = function() {
-    console.log('click');
     MidiPlayer.playInterval(self.currentNote, self.currentInterval);
     self.answerStatus = "";
     Timer.turnOn();
-    console.log('Timer:' + Timer.timeLeft);
   };
 
   self.genNote = function() {
@@ -29,32 +27,25 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   self.isAnswerCorrect = function() {
-    console.log(self.enteredAnswer);
     return self.correctAnswer === self.enteredAnswer;
   };
 
   self.newInterval = function() {
-    console.log('newInterval');
     self.currentNote = self.genNote();
     self.currentInterval = self.genInterval();
     self.setAnswer();
     self.intervalsValues = self.copyArray(MidiPlayer.intervalNamesArray);
     self.populateAnswers();
     self.randomAnswers();
-    console.log('NI-curNote:' + self.currentNote);
-    console.log('NI-curIn:' + self.currentInterval);
-    console.log('NI-corAns:' + self.correctAnswer);
   };
 
   self.supplyAnswer = function() {
     if (self.isAnswerCorrect()) {
       self.newInterval();
       Points.changePoints(+1);
-      console.log('Correct! Points:' + Points.pointsTotal);
       return true;
     } else {
       Points.changePoints(-1);
-      console.log('Wrong!, Points:' + Points.pointsTotal);
       return false;
     }
   };
@@ -78,14 +69,11 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     self.intervals = MidiPlayer.intervals;
     self.multipleChoice = [];
     self.populateMultipleChoice();
-    console.log("self.multipleChoice:"+self.multipleChoice);
   };
 
   self.populateMultipleChoice = function() {
     var indexToDelete = self.intervalsValues.indexOf(self.intervals[self.currentInterval]);
-    console.log('indexToDelete:' + indexToDelete);
     self.intervalsValues.splice(indexToDelete, 1);
-    console.log('self.intervalsValues:' + self.intervalsValues);
     self.multipleChoice.push(self.correctAnswer);
 
     for (i = 0; i < 3; i++) {
@@ -120,7 +108,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   $interval(function(){ Timer.countdown(); }, 1000);
 
   $scope.init = (function() {
-    console.log('$scope.init');
     self.newInterval();
   })();
 }]);
