@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" ng-app="Capriccioso">
+  <head>
+    <meta charset="utf-8">
+    <title>Capriccioso</title>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <link rel="stylesheet" href="application.css">
+    <script src="js/app.js"></script>
+    <script src="js/capricciosoController.js"></script>
+    <script src="js/midi.js"></script>
+    <script src="js/midi/audioDetect.js"></script>
+    <script src="js/midi/plugin.webmidi.js"></script>
+    <script src="js/midi/plugin.webaudio.js"></script>
+    <script src="js/midi/loader.js"></script>
+    <script src="js/midi/dom_request_xhr.js"></script>
+    <script src="js/midi/gm.js"></script>
+    <script src="js/midi/Base64Binary.js"></script>
+
+
+  </head>
+  <body ng-controller="CapricciosoController as capriCtrl">
+    <header>
+      <h1>Capriccioso</h1>
+      <h3>Whimsical and fanciful in character.</h3>
+    </header>
+
+    <main>
+
+      <a ng-click="capriCtrl.playNotes()" title="Play" class="play"></a>
+
+      <div class="ph-container1">
+
+        <div class="ph-float">
+          <a class='ph-button ph-btn-1'
+            ng-click="capriCtrl.clickAnswer(1)">
+            <span ng-bind="capriCtrl.randomAnswers().answer1"></span>
+          </a>
+        </div>
+
+        <div class="ph-float">
+          <a class='ph-button ph-btn-2'
+            ng-click="capriCtrl.clickAnswer(2)">
+            <span ng-bind="capriCtrl.randomAnswers().answer2"></span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="ph-container2">
+
+        <div class="ph-float">
+          <a class='ph-button ph-btn-3'
+            ng-click="capriCtrl.clickAnswer(3)">
+            <span ng-bind="capriCtrl.randomAnswers().answer3"></span>
+          </a>
+        </div>
+
+        <div class="ph-float">
+          <a class='ph-button ph-btn-4'
+            ng-click="capriCtrl.clickAnswers(4)">
+            <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="ph-clear"></div>
+
+      <div id="answer_container"> </div>
+
+      <div id="answer_status">
+        <span ng-show="capriCtrl.isAnswerCorrect()">Correct!</span>
+      </div>
+
+    </main>
+  </body>
+</html>
