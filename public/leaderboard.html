@@ -2,21 +2,39 @@
 <html lang="en" ng-app="Capriccioso">
 
 <body ng-controller="LeaderController as leaderCtrl">
-  <p>Leaderboard:</p>
   <main>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in leaderCtrl.users">
-          <td ng-bind="user.username"></td>
-            <td ng-bind="user.score"></td>
-</tbody>
+    <table align="center">
+
+      <h2>Leaderboard</h2>
+      <br>
+      
+      <tr>
+        <th>Rank</th>
+        <th>Score</th>
+        <th>Username</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+    </table>
+<!--       <tbody> -->
+<!--         <tr ng&#45;repeat="user in leaderCtrl.users"> -->
+<!--           <td ng&#45;bind="user.username"></td> -->
+<!--             <td ng&#45;bind="user.score"></td> -->
+<!-- </tbody> -->
   </main>
 </body>
 

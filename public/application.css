@@ -104,7 +104,7 @@ text-align: center;
 
 
 /* Cells in even rows (2,4,6...) are one color */
-tr:nth-child(even) td { background: #F1F1F1; }
+tr:nth-child(even) td { background: #FFFFFF; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
 tr:nth-child(odd) td { background: #dae3eb; }
@@ -112,7 +112,10 @@ tr:nth-child(odd) td { background: #dae3eb; }
 tr td:hover { background: #666; color: #FFF; }
 
 
-
+#end_of_round {
+  font-size: 2.5em;
+  color: #2C3E50;
+}
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 body {
@@ -281,4 +284,17 @@ body {
 
 .incorrect {
   background-color: red !important;
+}
+/*leaderboard_link
+========================*/
+
+#leaderboard_link {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+}
+
+#leaderboard_link:hover, #leaderboard_link:focus, #leaderboard_link:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
 }
