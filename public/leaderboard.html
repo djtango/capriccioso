@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="Capriccioso">
+
+<body ng-controller="CapricciosoController as capriCtrl">
+  <main>
+
+    <table align="center">
+
+      <h2>Leaderboard</h2>
+      <br>
+
+      <tr>
+        <th>Rank</th>
+        <th>Score</th>
+        <th>Username</th>
+      </tr>
+      <tr ng-repeat="scorepair in capriCtrl.leaderboardJSON">
+        <td ng-bind="$index+1"></td>
+        <td ng-bind="scorepair.score"></td>
+        <td ng-bind="scorepair.username"></td>
+      </tr>
+    </table>
+  </main>
+</body>
+
+</html>
