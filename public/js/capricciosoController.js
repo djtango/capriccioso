@@ -113,11 +113,11 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   self.setCorrectNum = function(num) {
     self.correctNum = num;
   };
-  
+
   self.setIncorrectNum = function(num) {
     self.incorrectNum = num;
   };
-  
+
   self.isButtonCorrect = function(num) {
     return self.correctNum === num;
   };
@@ -126,18 +126,26 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     return self.incorrectNum === num;
   };
 
-  $interval(function(){ Timer.countdown(); }, 1000);
-
   self.storeScore = function() {
     $http({
       url: '/scores',
       method: 'POST',
       params: {
-        'score': Points.pointsTotal
+        'score': Points.pointsTotal,
       }
     });
-    self.showLeaderboard = true;
+
+    $http({
+      url: '/leaderboard',
+      method: 'GET'
+    }).then(function(res){
+      self.leaderboardJSON = res.data;
+      console.log(self.leaderboardJSON);
+      self.showLeaderboard = true;
+    });
   };
+
+  $interval(function(){ Timer.countdown(); }, 1000);
 
   function resetNumsAfter1s() {
     $timeout(function(){

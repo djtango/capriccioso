@@ -60,11 +60,31 @@ main {
   font-size: 0.75em;
 }
 
-
-
 #answer_container {
     padding: 1.25em 0;
 }
+
+#end-of-round-circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+  z-index: 1;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  background-color: green;
+}
+
+#final-score-display {
+  color: white;
+  position: relative;
+  top: 50%;
+  margin-top: -5%;
+  font-size: 2em;
+}
+
 
 
 
