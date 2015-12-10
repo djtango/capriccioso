@@ -12,18 +12,40 @@
 
   <main>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in leaderCtrl.users">
-          <td ng-bind="user.username"></td>
-            <td ng-bind="user.score"></td>
-</tbody>
+
+
+    <table align="center">
+
+      <h2>Leaderboard</h2>
+      <br>
+      
+      <tr>
+        <th>Rank</th>
+        <th>Score</th>
+        <th>Username</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td ng-bind="user.username"></td>
+        <td ng-bind="user.score"></td>
+      </tr>
+    </table>
+
+
+
+
+
+
   </main>
 </body>
 
