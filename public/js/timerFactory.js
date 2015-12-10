@@ -15,7 +15,10 @@ capri.factory('Timer', function() {
 
   var countdown = (function() {
     if(this.isTimerOn && this.timeLeft > 0){
-      this.timeLeft -= 1;
+      this.timeLeft -= 10;
+    }
+    if(this.timeLeft <= 0) {
+      this.hasFinished = true;
     }
   });
 

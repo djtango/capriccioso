@@ -1,7 +1,13 @@
 var Score = require('mongoose').model('Score');
 
 exports.create = function(req, res, next) {
-  var score = new Score(req.body);
+
+  var score = new Score({
+    username: req.user.username,
+    score: req.query.score
+  });
+
+
   score.save(function(err) {
     if (err) {
       return next(err);
@@ -10,4 +16,5 @@ exports.create = function(req, res, next) {
       res.json(score);
     }
   });
+  console.log('score stored: ' + score);
 };
