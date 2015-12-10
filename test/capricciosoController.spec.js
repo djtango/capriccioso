@@ -6,14 +6,13 @@ describe('CapricciosoController', function() {
   var perfect4th = 5;
   var mockMidiPlayer;
   var scope;
-  var midiPlayerSpy = jasmine.createSpyObj('midiPlayerSpy', ['playInterval', 'intervals'])
+  var midiPlayerSpy = jasmine.createSpyObj('midiPlayerSpy', ['playInterval', 'intervals', 'intervalNamesArray'])
 
   beforeEach(inject(function($rootScope, $controller, $q){ 
-
     scope = $rootScope.$new();
 
     mockMidiPlayer = {
-      playInterval: function(note, interval) {},
+      playInterval: function(note, interval) { console.log('mockPlay called'); return true; },
       intervals: {
         1: 'Minor 2nd',
         2: 'Major 2nd',
@@ -26,13 +25,28 @@ describe('CapricciosoController', function() {
         9: 'Major 6th',
         10: 'Minor 7th',
         11: 'Major 7th'
-      }
+      },
+      intervalNamesArray: ['Minor 2nd',
+        'Major 2nd',
+        'Minor 3rd',
+        'Major 3rd',
+        'Perfect 4th',
+        'Augmented 4th',
+        'Perfect 5th',
+        'Minor 6th',
+        'Major 6th',
+        'Minor 7th',
+        'Major 7th'
+      ]
     };
-
     ctrl = $controller('CapricciosoController', {
       $scope: scope,
-      MidiPlayer: midiPlayerSpy
+      MidiPlayer: mockMidiPlayer
     });
+    ctrl.intervalsValues = [];
+    ctrl.populateAnswers = function() { return ['Major 3rd', 'Perfect 4th', 'Augmented 4th', 'Perfect 5th'] }
+    ctrl.randomAnswers = function() { return { "answer1": 'Major 3rd', "answer2": 'Perfect 4th',
+                                               "answer3": 'Augmented 4th', "answer4": 'Perfect 5th' } }
     ctrl.genNote = function() { return middleC; };
     ctrl.genInterval = function() { return perfect4th; };
 
@@ -69,12 +83,15 @@ describe('CapricciosoController', function() {
   });
 
   it('will call the midiPlayer when playNotes is called', function() {
-    console.log('Midiplayer: ' + ctrl.MidiPlayer);
-    // spyOn(ctrl.MidiPlayer, 'playInterval')
-    inject(function() {
-      midiPlayerSpy.playInterval.and.returnValue(undefined);
-    });
-    expect(ctrl.MidiPlayer.playInterval).toHaveBeenCalledWith(middleC, perfect4th);
+    console.log('in test...')
+    console.log('ctrl.MidiPlayer is: ' + ctrl.MidiPlayer)
+    console.log('ctrl.Midiplayer.playInterval is: ' + ctrl.Midiplayer.playInterval)
+    // inject(midiPlayerSpy)
+    spyOn(ctrl.MidiPlayer, 'playInterval');
+    expect(function(){
+      console.log('about to call playInterval in the test');
+      ctrl.MidiPlayer.playInterval; }).toBe(true);
+    // expect(ctrl.MidiPlayer.playInterval).toHaveBeenCalledWith(middleC, perfect4th);
   });
 
   it('supplyAnswer will call newInterval when the answer is correct', function() {
