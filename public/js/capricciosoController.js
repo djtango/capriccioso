@@ -1,5 +1,5 @@
 capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
- '$scope', '$interval', '$timeout', function(MidiPlayer, Points, Timer, $scope, $interval, $timeout) {
+ '$scope', '$interval', '$timeout', '$http', function(MidiPlayer, Points, Timer, $scope, $interval, $timeout, $http) {
 
   var self = this;
   var intervalsValues;
@@ -127,16 +127,17 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   $interval(function(){ Timer.countdown(); }, 1000);
-  // $interval(function() {
-  //   if(self.correctNum || self.incorrectNum) {
-  //     (function() {
-  //       $timeout(function() {
-  //         self.correctNum = undefined;
-  //         self.incorrectNum = undefined;
-  //       }, 1000);
-  //     })();
-  //   }
-  // };, 100);
+
+  self.storeScore = function() {
+    $http({
+      url: '/scores',
+      method: 'POST',
+      params: {
+        'score': Points.pointsTotal
+      }
+    });
+    self.showLeaderboard = true;
+  };
 
   function resetNumsAfter1s() {
     $timeout(function(){
@@ -146,6 +147,7 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   $scope.init = (function() {
+    self.showLeaderboard = false;
     self.newInterval();
   })();
 }]);

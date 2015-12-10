@@ -8,11 +8,16 @@
       <% include ../views/partials/header %>
     </header>
 
-    <div ng-show="timerFactory.timeLeft <= 0">
+    <div id="end_of_round"  ng-show="timerFactory.hasFinished">
+      <p>Time up! You scored: <span ng-bind="pointsFactory.pointsTotal"></span> points.</p>
+      <a ng-click="capriCtrl.storeScore()" ng-hide="capriCtrl.showLeaderboard">Take me to the leaderboard</a>
+    </div>
+    <div ng-show="capriCtrl.showLeaderboard">
       <capriccioso-leaderboard></capriccioso-leaderboard>
     </div>
 
-    <main ng-show="timerFactory.timeLeft > 0">
+    <main ng-show="!timerFactory.hasFinished">
+
 
 
 
