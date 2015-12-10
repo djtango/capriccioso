@@ -48,8 +48,8 @@ main {
   right: 1em;
   padding-top: 0.2em;
   padding-bottom: 0.25em;
-  padding-right: 0.3em;
-  padding-left: 0.3em;
+  padding-right: 0.2em;
+  padding-left: 0.2em;
   font-size: 1em;
 }
 
@@ -194,7 +194,7 @@ body {
     border-width: 0em 0em 0em;
     min-width: 7.25em;
     box-shadow: 0 0.0625em 0 rgba(255, 255, 255, 0.1) inset;
-    color: #FFFFFF;
+    color: #F8F8F8;
     border-radius: 0.375em;
     cursor: pointer;
     display: inline-block;
@@ -292,6 +292,8 @@ body {
 
     border-color: #2c3e50;
     background-color: #476481;
+    color: F8F8F8 !important;
+    font-size: 0.6em !important;
 }
 
 #leaderboard_link:hover, #leaderboard_link:focus, #leaderboard_link:active {
