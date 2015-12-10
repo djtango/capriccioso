@@ -1,5 +1,5 @@
 capri.factory('Timer', function() {
-  var default_time  = 60;
+  var default_time  = 6;
   this.timeLeft     = default_time;
   this.isTimerOn     = false;
 

@@ -8,11 +8,12 @@
       <% include ../views/partials/header %>
     </header>
 
-    <main>
-
-    <div>
+    <div ng-show="timerFactory.timeLeft <= 0">
       <capriccioso-leaderboard></capriccioso-leaderboard>
     </div>
+
+    <main ng-show="timerFactory.timeLeft > 0">
+
 
 
 
