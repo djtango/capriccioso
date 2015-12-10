@@ -1,6 +1,33 @@
 var User = require('mongoose').model('User');
 var passport = require('passport');
 
+exports.renderRegister = function(req, res, next) {
+    if (!req.user) {
+      res.render('register', {user: '', messages: req.flash('error')});
+    }
+    else { return res.redirect('/'); }
+};
+
+exports.register = function(req, res, next) {
+    if (!req.user) {
+        var user = new User(req.body);
+        var message = null;
+        user.provider = 'local';
+        user.save(function(err) {
+            if (err) {
+                var message = getErrorMessage(err);
+                req.flash('error', message);
+                return res.redirect('/register');
+            }
+            req.login(user, function(err) {
+                if (err) {return next(err);}
+                return res.redirect('/play');
+            });
+        });
+    }
+    else {return res.redirect('/');}
+};
+
 var getErrorMessage = function(err) {
     var message = '';
     if (err.code) {
@@ -36,43 +63,6 @@ exports.renderLogin = function(req, res, next) {
     }
 };
 
-exports.renderRegister = function(req, res, next) {
-    if (!req.user) {
-        res.render('register', {
-            user: '',
-            title: 'Register Form',
-            messages: req.flash('error')
-        });
-    }
-    else {
-        return res.redirect('/');
-    }
-};
-
-exports.register = function(req, res, next) {
-    if (!req.user) {
-        var user = new User(req.body);
-        var message = null;
-        user.provider = 'local';
-        user.save(function(err) {
-            if (err) {
-                var message = getErrorMessage(err);
-                req.flash('error', message);
-                return res.redirect('/register');
-            }
-
-            req.login(user, function(err) {
-                if (err)
-                    return next(err);
-
-                return res.redirect('/play');
-            });
-        });
-    }
-    else {
-        return res.redirect('/');
-    }
-};
 
 exports.logout = function(req, res) {
     req.logout();
@@ -102,44 +92,44 @@ exports.list = function(req, res, next) {
 	});
 };
 
-exports.read = function(req, res) {
-	res.json(req.user);
-};
-
-exports.userByID = function(req, res, next, id) {
-	User.findOne({
-			_id: id
-		},
-		function(err, user) {
-			if (err) {
-				return next(err);
-			}
-			else {
-				req.user = user;
-				next();
-			}
-		}
-	);
-};
-
-exports.update = function(req, res, next) {
-	User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
-		if (err) {
-			return next(err);
-		}
-		else {
-			res.json(user);
-		}
-	});
-};
-
-exports.delete = function(req, res, next) {
-	req.user.remove(function(err) {
-		if (err) {
-			return next(err);
-		}
-		else {
-			res.json(req.user);
-		}
-	});
-};
+// exports.read = function(req, res) {
+// 	res.json(req.user);
+// };
+//
+// exports.userByID = function(req, res, next, id) {
+// 	User.findOne({
+// 			_id: id
+// 		},
+// 		function(err, user) {
+// 			if (err) {
+// 				return next(err);
+// 			}
+// 			else {
+// 				req.user = user;
+// 				next();
+// 			}
+// 		}
+// 	);
+// };
+//
+// exports.update = function(req, res, next) {
+// 	User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
+// 		if (err) {
+// 			return next(err);
+// 		}
+// 		else {
+// 			res.json(user);
+// 		}
+// 	});
+// };
+//
+// exports.delete = function(req, res, next) {
+// 	req.user.remove(function(err) {
+// 		if (err) {
+// 			return next(err);
+// 		}
+// 		else {
+// 			res.json(req.user);
+// 		}
+// 	});
+// };

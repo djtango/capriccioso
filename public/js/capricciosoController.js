@@ -31,28 +31,44 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   self.newInterval = function() {
-    self.respondToClicks = true;
+    self.correctButton = 0;
     self.currentNote = self.genNote();
     self.currentInterval = self.genInterval();
     self.setAnswer();
-    console.log('correctAnswer: '+self.correctAnswer);
     self.intervalsValues = self.copyArray(MidiPlayer.intervalNamesArray);
     self.populateAnswers();
     self.randomAnswers();
+    self.respondToClicks = true;
   };
 
   self.supplyAnswer = function(num) {
     if (self.isAnswerCorrect()) {
-      self.newInterval();
-      Points.changePoints(+1);
-      self.setCorrectNum(num);
-      self.playNotes();
+      self.correctButton = self.clickedButton;
+      self.respondToClicks = false;
+      $timeout(self.resetButtons, 500);
       return true;
     } else {
+      self.incorrectButton = self.clickedButton;
       Points.changePoints(-1);
-      self.setIncorrectNum(num);
       return false;
     }
+  };
+
+  self.resetButtons = function() {
+    self.correctButton = 0;
+    self.incorrectButton = 0;
+    self.newInterval();
+    Points.changePoints(+1);
+    self.playNotes();
+    console.log("Timeout finished!");
+  };
+
+  self.isButtonCorrect = function(buttonNumber) {
+    return buttonNumber === self.correctButton;
+  };
+
+  self.isButtonIncorrect = function(buttonNumber) {
+    return buttonNumber === self.incorrectButton;
   };
 
   self.randomAnswers = function() {
@@ -67,10 +83,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   self.clickAnswer = function(num) {
     if(self.respondToClicks) {
       var playerAnswer = "answer" + num;
+      self.clickedButton = num;
       self.enteredAnswer = self.randomAnswers()[playerAnswer];
-      console.log('enteredAnswer:' + self.enteredAnswer);
       self.answerStatus = self.supplyAnswer(num) ? "Correct" : "Incorrect";
-      resetNumsAfter1s();
     }
   };
 
@@ -113,22 +128,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     });
   };
 
-  self.setCorrectNum = function(num) {
-    self.correctNum = num;
-  };
-
-  self.setIncorrectNum = function(num) {
-    self.incorrectNum = num;
-  };
-
-  self.isButtonCorrect = function(num) {
-    return self.correctNum === num;
-  };
-
-  self.isButtonIncorrect = function(num) {
-    return self.incorrectNum === num;
-  };
-
   self.storeScore = function() {
     $http({
       url: '/scores',
@@ -149,15 +148,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   };
 
   $interval(function(){ Timer.countdown(); }, 1000);
-
-  function resetNumsAfter1s() {
-    self.respondToClicks = false;
-    $timeout(function(){
-      self.respondToClicks = true;
-      self.correctNum = undefined;
-      self.incorrectNum = undefined;
-    }, 250)
-  };
 
   $scope.init = (function() {
     self.showLeaderboard = false;

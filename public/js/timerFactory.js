@@ -10,8 +10,6 @@ capri.factory('Timer', function() {
 
   var turnOff = (function() {
     this.isTimerOn = false;
-    console.log('turnOff is being called');
-    console.log(this.isTimerOn);
   });
 
   var countdown = (function() {
