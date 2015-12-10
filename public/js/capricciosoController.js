@@ -112,6 +112,16 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
         'score': Points.pointsTotal,
       }
     });
+
+    $http({
+      url: '/leaderboard',
+      method: 'GET'
+    }).then(function(res){
+      self.leaderboardJSON = res.data;
+      console.log(self.leaderboardJSON);
+    });
+
+
   };
 
   $interval(function(){ Timer.countdown(); }, 1000);
