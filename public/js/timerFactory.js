@@ -1,5 +1,6 @@
 capri.factory('Timer', function() {
-  var default_time  = 60;
+  var default_time  = 6;
+  this.hasFinished = false;
   this.timeLeft     = default_time;
   this.isTimerOn     = false;
 
@@ -17,11 +18,15 @@ capri.factory('Timer', function() {
     if(this.isTimerOn && this.timeLeft > 0){
       this.timeLeft -= 1;
     }
+    if(this.timeLeft <= 0) {
+      this.hasFinished = true;
+    }
   });
 
   return {
     timeLeft: this.timeLeft,
     turnOn  : turnOn,
     countdown: countdown,
+    hasFinished: this.hasFinished
   };
 });

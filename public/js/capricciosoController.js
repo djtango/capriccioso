@@ -1,5 +1,5 @@
 capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
- '$scope', '$interval', function(MidiPlayer, Points, Timer, $scope, $interval) {
+ '$scope', '$interval', '$timeout', '$http', function(MidiPlayer, Points, Timer, $scope, $interval, $timeout, $http) {
 
   var self = this;
   var intervalsValues;
@@ -34,18 +34,22 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     self.currentNote = self.genNote();
     self.currentInterval = self.genInterval();
     self.setAnswer();
+    console.log('correctAnswer: '+self.correctAnswer);
     self.intervalsValues = self.copyArray(MidiPlayer.intervalNamesArray);
     self.populateAnswers();
     self.randomAnswers();
   };
 
-  self.supplyAnswer = function() {
+  self.supplyAnswer = function(num) {
     if (self.isAnswerCorrect()) {
       self.newInterval();
       Points.changePoints(+1);
+      self.setCorrectNum(num);
+      self.playNotes();
       return true;
     } else {
       Points.changePoints(-1);
+      self.setIncorrectNum(num);
       return false;
     }
   };
@@ -62,8 +66,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
   self.clickAnswer = function(num) {
     var playerAnswer = "answer" + num;
     self.enteredAnswer = self.randomAnswers()[playerAnswer];
-    self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
-    console.log('answerStatus:' + self.answerStatus)
+    console.log('enteredAnswer:' + self.enteredAnswer);
+    self.answerStatus = self.supplyAnswer(num) ? "Correct" : "Incorrect";
+    resetNumsAfter1s();
   };
 
   self.populateAnswers = function() {
@@ -105,10 +110,44 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     });
   };
 
+  self.setCorrectNum = function(num) {
+    self.correctNum = num;
+  };
+  
+  self.setIncorrectNum = function(num) {
+    self.incorrectNum = num;
+  };
+  
+  self.isButtonCorrect = function(num) {
+    return self.correctNum === num;
+  };
+
+  self.isButtonIncorrect = function(num) {
+    return self.incorrectNum === num;
+  };
 
   $interval(function(){ Timer.countdown(); }, 1000);
 
+  self.storeScore = function() {
+    $http({
+      url: '/scores',
+      method: 'POST',
+      params: {
+        'score': Points.pointsTotal
+      }
+    });
+    self.showLeaderboard = true;
+  };
+
+  function resetNumsAfter1s() {
+    $timeout(function(){
+      self.correctNum = undefined;
+      self.incorrectNum = undefined;
+    }, 1000)
+  };
+
   $scope.init = (function() {
+    self.showLeaderboard = false;
     self.newInterval();
   })();
 }]);
