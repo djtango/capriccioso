@@ -17,8 +17,20 @@ exports.create = function(req, res, next) {
 };
 
 exports.leaderboard = function(req, res) {
-  var results = {
-    data: 'test'
-  };
-  res.end(JSON.stringify(results));
+
+  var query = Score.find({}).select('score username').sort({score: -1}).exec(function(err, data){
+    if(err){
+        res.json(err);
+    } else {
+        res.json(data);
+        console.log(data);
+    }
+  });
+
+  //
+  //
+  // var results = {
+  //   data: "test"
+  // };
+  // res.end(JSON.stringify(results));
 };
