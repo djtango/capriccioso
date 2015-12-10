@@ -10,10 +10,12 @@
       <br>
 
       <tr>
+        <th>Rank</th>
         <th>Score</th>
         <th>Username</th>
       </tr>
       <tr ng-repeat="scorepair in capriCtrl.leaderboardJSON">
+        <td ng-bind="$index+1"></td>
         <td ng-bind="scorepair.score"></td>
         <td ng-bind="scorepair.username"></td>
       </tr>

@@ -5,7 +5,7 @@ A Makerthon Project by Deon, Rob, Aaron & George
 
 During Week 9 of our Makers Academy experience we took part in our first hackathon. After picking a project we worked on it tirelessly for three days, presenting it to our cohort at the end. We came out with... Capriccioso!
 
-Capriccioso is a web app designed to help music students hone their musical ear. Identifying the intervals (distances) between notes is an important and useful skill for serious musicians, and the app gamifies the process of practising it. Capriccioso selects musical intervals at random and plays them using the MIDI standard; the player is given sixty seconds to correctly identify as many of them as possible from a multiple choice selection.
+Capriccioso is a web app designed to help music students hone their musical ear. Identifying the intervals (distances) between notes is an important and useful skill for musicians, and the app gamifies the process of practising it. Capriccioso selects musical intervals at random and plays them using the MIDI standard; the player is given sixty seconds to correctly identify as many of them as possible from a multiple choice selection.
 
 The app collects players' high scores and displays a high scores leaderboard. This design fosters competition, encouraging users to try to better their own scores and to keep practising, ultimately improving their musical ability.
 
@@ -44,7 +44,7 @@ We decided to work with AngularJS along with the wider MEAN stack for this proje
 * The brilliant [MIDI.js](https://github.com/mudcube/MIDI.js) to generate the desired musical notes using JavaScript functions
 * Express to serve our application and handle routing
 * MongoDB to store user data and scores
-* BCrypt to encrypt users' passwords
+* Crypto to encrypt users' passwords
 
 Challenges
 ----------

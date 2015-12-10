@@ -18,7 +18,7 @@ exports.create = function(req, res, next) {
 
 exports.leaderboard = function(req, res) {
 
-  var query = Score.find({}).select('score username').sort({score: -1}).exec(function(err, data){
+  var query = Score.find({}).select('score username').sort({score: -1}).limit(10).exec(function(err, data){
     if(err){
         res.json(err);
     } else {
