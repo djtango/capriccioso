@@ -74,6 +74,19 @@ exports.register = function(req, res, next) {
     }
 };
 
+exports.storeScore = function(req, res) {
+  console.log('user id: ' + req.user._id);
+  User.findById(req.user._id, function(err, user) {
+    if (err) { console.log('user not found: ' + err); }
+    console.log('user before mod: ' + user);
+    user.score = req.query.score;
+    user.save(function(err) {
+      if (err) { console.log('Save failed: ' + err); }
+    });
+    console.log('user after mod: ' + user);
+  });
+};
+
 exports.logout = function(req, res) {
     req.logout();
     res.redirect('/');

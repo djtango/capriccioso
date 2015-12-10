@@ -21,4 +21,6 @@ module.exports = function(app) {
 		}));
 
 	app.get('/logout', users.logout);
+
+	app.route('/scores').post(users.storeScore);
 };

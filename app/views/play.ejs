@@ -65,6 +65,14 @@
         <span ng-bind="timerFactory.timeLeft"></span>
       </div>
 
+      <div id="end-of-round-circle" ng-click="capriCtrl.storeScore()" ng-show="timerFactory.hasFinished">
+        <div id="final-score-display">
+          Time up! You scored:<br>
+          <span id="final-score" ng-bind="pointsFactory.pointsTotal"></span>
+        </div>
+
+      </div>
+
     </main>
   </body>
 </html>

@@ -1,5 +1,5 @@
 capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
- '$scope', '$interval', function(MidiPlayer, Points, Timer, $scope, $interval) {
+ '$scope', '$interval', '$http', function(MidiPlayer, Points, Timer, $scope, $interval, $http) {
 
   var self = this;
   var intervalsValues;
@@ -63,7 +63,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     var playerAnswer = "answer" + num;
     self.enteredAnswer = self.randomAnswers()[playerAnswer];
     self.answerStatus = self.supplyAnswer() ? "Correct" : "Incorrect";
-    console.log('answerStatus:' + self.answerStatus)
   };
 
   self.populateAnswers = function() {
@@ -105,8 +104,20 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     });
   };
 
+  self.storeScore = function() {
+    $http({
+      url: '/scores',
+      method: 'POST',
+      params: {
+        'score': Points.pointsTotal
+      }
+    });
+  };
 
-  $interval(function(){ Timer.countdown(); }, 1000);
+
+  $interval(function() {
+    Timer.countdown();
+  }, 1000);
 
   $scope.init = (function() {
     self.newInterval();
