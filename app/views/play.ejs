@@ -1,78 +1,81 @@
 <!doctype html>
 <html lang="en" ng-app="Capriccioso">
-  <head>
-    <% include ../views/partials/head %>
-  </head>
-  <body ng-controller="CapricciosoController as capriCtrl">
-    <header>
-      <% include ../views/partials/header %>
-    </header>
 
-    <main>
+<head>
+  <% include ../views/partials/head %>
+</head>
 
-      <a ng-click="capriCtrl.playNotes()" title="Play" class="play"></a>
+<body ng-controller="CapricciosoController as capriCtrl">
+  <header>
+    <% include ../views/partials/header %>
+  </header>
 
-      <div class="ph-container1">
+  <main>
 
-        <div class="ph-float">
-          <a class='ph-button ph-btn-1'
-            ng-click="capriCtrl.clickAnswer(1)"
-            ng-class="{correct:capriCtrl.isButtonCorrect(1),
+    <table id="points_and_time">
+      <tr>
+        <td>
+
+          Points:
+          <span ng-bind="pointsFactory.pointsTotal"></span>
+
+        </td>
+
+        <td>
+          Time:
+          <span ng-bind="timerFactory.timeLeft"></span>
+        </td>
+      </tr>
+    </table>
+
+
+    <a ng-click="capriCtrl.playNotes()" title="Play" class="play"></a>
+
+    <div class="ph-container1">
+
+      <div class="ph-float">
+        <a class='ph-button ph-btn-1' ng-click="capriCtrl.clickAnswer(1)" ng-class="{correct:capriCtrl.isButtonCorrect(1),
                        incorrect:capriCtrl.isButtonIncorrect(1)}">
-            <span ng-bind="capriCtrl.randomAnswers().answer1"></span>
-          </a>
-        </div>
+          <span ng-bind="capriCtrl.randomAnswers().answer1"></span>
+        </a>
+      </div>
 
-        <div class="ph-float">
-          <a class='ph-button ph-btn-2'
-            ng-click="capriCtrl.clickAnswer(2)"
-            ng-class="{correct:capriCtrl.isButtonCorrect(2),
+      <div class="ph-float">
+        <a class='ph-button ph-btn-2' ng-click="capriCtrl.clickAnswer(2)" ng-class="{correct:capriCtrl.isButtonCorrect(2),
                        incorrect:capriCtrl.isButtonIncorrect(2)}">
-            <span ng-bind="capriCtrl.randomAnswers().answer2"></span>
-          </a>
-        </div>
-
+          <span ng-bind="capriCtrl.randomAnswers().answer2"></span>
+        </a>
       </div>
 
-      <div class="ph-container2">
+    </div>
 
-        <div class="ph-float">
-          <a class='ph-button ph-btn-3'
-            ng-click="capriCtrl.clickAnswer(3)"
-            ng-class="{correct:capriCtrl.isButtonCorrect(3),
+    <div class="ph-container2">
+
+      <div class="ph-float">
+        <a class='ph-button ph-btn-3' ng-click="capriCtrl.clickAnswer(3)" ng-class="{correct:capriCtrl.isButtonCorrect(3),
                        incorrect:capriCtrl.isButtonIncorrect(3)}">
-            <span ng-bind="capriCtrl.randomAnswers().answer3"></span>
-          </a>
-        </div>
+          <span ng-bind="capriCtrl.randomAnswers().answer3"></span>
+        </a>
+      </div>
 
-        <div class="ph-float">
-          <a class='ph-button ph-btn-4'
-            ng-click="capriCtrl.clickAnswer(4)"
-            ng-class="{correct:capriCtrl.isButtonCorrect(4),
+      <div class="ph-float">
+        <a class='ph-button ph-btn-4' ng-click="capriCtrl.clickAnswer(4)" ng-class="{correct:capriCtrl.isButtonCorrect(4),
                        incorrect:capriCtrl.isButtonIncorrect(4)}">
-            <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
-          </a>
-        </div>
-
+          <span ng-bind="capriCtrl.randomAnswers().answer4"></span>
+        </a>
       </div>
 
+    </div>
 
-      <div class="ph-clear"></div>
 
-      <div id="answer_container"> </div>
+    <div class="ph-clear"></div>
 
-      <div id="answer_status">
-        <span ng-bind="capriCtrl.answerStatus"></span>
-      </div>
+    <div id="answer_container"> </div>
 
-      <div id="points_total">
-        <span ng-bind="pointsFactory.pointsTotal"></span>
-      </div>
 
-      <div id="time_left">
-        <span ng-bind="timerFactory.timeLeft"></span>
-      </div>
 
-    </main>
-  </body>
+
+  </main>
+</body>
+
 </html>
