@@ -1,8 +1,6 @@
 # Capriccioso
 
-Makerthon Project
+A Makerthon Project by Deon, Rob, Aaron & George
 ------------------
 
-Get your pitch on.
-
-
+In Week 9 of our Makers Academy experience we took part in our first hackathon. After brainstorming a project to  our own projects to work on.
