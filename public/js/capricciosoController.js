@@ -1,10 +1,12 @@
-capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Answers',
- '$scope', '$interval', '$timeout', '$http', function(MidiPlayer, Points, Timer, Answers, $scope, $interval, $timeout, $http) {
+capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Answers', 'Notes',
+ '$scope', '$interval', '$timeout', '$http', function(MidiPlayer, Points, Timer, Answers, Notes, $scope, $interval, $timeout, $http) {
 
   var self = this;
   var intervalsValues;
   var multipleChoice;
   var intervals;
+  var C4 = 60;
+  var B4 = 72;
   $scope.pointsFactory = Points;
   $scope.timerFactory = Timer;
 
@@ -12,16 +14,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Ans
     MidiPlayer.playInterval(self.currentNote, self.currentInterval);
     self.answerStatus = "";
     Timer.turnOn();
-  };
-
-  // generate note configurations
-
-  self.genNote = function() {
-    return Math.floor((Math.random() * 12) + 50);
-  };
-
-  self.genInterval = function() {
-    return Math.floor((Math.random() * 11) + 1);
   };
 
   self.setAnswer = function() {
@@ -34,12 +26,10 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Ans
 
   self.newInterval = function() {
     self.correctButton = undefined;
-    self.currentNote = self.genNote();
-    self.currentInterval = self.genInterval();
+    self.currentNote = Notes.genNote(C4, B4);
+    self.currentInterval = Notes.genInterval(11);
     self.setAnswer();
-    // self.intervalsValues = self.copyArray(MidiPlayer.intervalNamesArray);
     setAnswerOptions();
-    // self.bindMultipleChoiceAnswers();
     self.respondToClicks = true;
   };
 
@@ -62,7 +52,6 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Ans
     self.newInterval();
     Points.changePoints(+1);
     self.playNotes();
-    console.log("Timeout finished!");
   };
 
   self.isButtonCorrect = function(buttonNumber) {
@@ -78,63 +67,13 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer', 'Ans
                                                          self.currentInterval)
   };
 
-  // self.bindMultipleChoiceAnswers = function() {
-  //   return {
-  //     "answer1": self.multipleChoice[0],
-  //     "answer2": self.multipleChoice[1],
-  //     "answer3": self.multipleChoice[2],
-  //     "answer4": self.multipleChoice[3],
-  //   };
-  // };
-
   self.clickAnswer = function(num) {
     if(self.respondToClicks) {
-      // var playerAnswer = "answer" + num;
       self.clickedButton = num;
-      console.log(self.multipleChoice);
       self.enteredAnswer = self.multipleChoice[num];
       self.answerStatus = self.supplyAnswer(num) ? "Correct" : "Incorrect";
     }
   };
-
-  // self.populateAnswers = function() {
-    // self.intervals = MidiPlayer.intervals;
-  //   self.multipleChoice = [];
-  //   self.populateMultipleChoice();
-  // };
-
-  // self.populateMultipleChoice = function() {
-  //   var indexToDelete = self.intervalsValues.indexOf(self.intervals[self.currentInterval]);
-  //   self.intervalsValues.splice(indexToDelete, 1);
-  //   self.multipleChoice.push(self.correctAnswer);
-  //
-  //   for (i = 0; i < 3; i++) {
-  //     var rand = Math.floor((Math.random() * (10 - i)));
-  //     var intervalToPush = self.intervalsValues[rand];
-  //     self.multipleChoice.push(intervalToPush);
-  //     self.intervalsValues.splice(rand,1);
-  //   }
-  //   self.shuffleArray(self.multipleChoice);
-  // };
-
-  // self.shuffleArray = function(array) {
-  //   var i = 0,
-  //     j = 0,
-  //     temp = null;
-  //
-  //   for (i = array.length - 1; i > 0; i -= 1) {
-  //     j = Math.floor(Math.random() * (i + 1));
-  //     temp = array[i];
-  //     array[i] = array[j];
-  //     array[j] = temp;
-  //   }
-  // };
-  //
-  // self.copyArray = function(array) {
-  //   return array.map(function(element) {
-  //     return element;
-  //   });
-  // };
 
   self.storeScore = function() {
     $http({
