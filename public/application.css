@@ -320,3 +320,16 @@ body {
     background-color: #688aac;
     border-color: #2c3e50;
 }
+
+#play_again {
+
+    border-color: #2c3e50;
+    background-color: #476481;
+    color: F8F8F8 !important;
+    font-size: 0.6em !important;
+}
+
+#play_again:hover, #play_again:focus, #play_again:active {
+    background-color: #688aac;
+    border-color: #2c3e50;
+}
