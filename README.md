@@ -65,7 +65,7 @@ To run the app:
 4. In your root folder, create the directory `/data/db` (you may need `sudo`)
 5. Give both data and db full read-write access using `sudo chmod a+rwx /data` and `sudo chmod a+rwx /data/db`
 6. Run `mongod`
-7. Run `node server.js` to start serving the application
+7. Run `node server.js` from the root project directory to start serving the application
 8. Visit `http://localhost:1337/` to start using the application
 9. Click the `Register` button to create your own account
 
