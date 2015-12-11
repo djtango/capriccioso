@@ -14,6 +14,9 @@ capri.controller('CapricciosoController', ['MidiPlayer', 'Points', 'Timer',
     Timer.turnOn();
   };
 
+
+  // generate note configurations
+
   self.genNote = function() {
     return Math.floor((Math.random() * 12) + 50);
   };
