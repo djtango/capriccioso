@@ -62,11 +62,12 @@ To run the app:
 1. Fork this repository and then clone it using `git clone <url>`
 2. cd into the project
 3. Run `npm install`, `bower install` and then `brew install mongo`
-4. In your root folder, create the directory `/data/db` and give it full read-write access
-5. Run `mongod`
-6. Run `node server.js` to start serving the application
-7. Visit `http://localhost:1337/` to start using the application
-8. Click the `Register` button to create your own account
+4. In your root folder, create the directory `/data/db` (you may need `sudo`)
+5. Give both data and db full read-write access using `sudo chmod a+rwx /data` and `sudo chmod a+rwx /data/db`
+6. Run `mongod`
+7. Run `node server.js` to start serving the application
+8. Visit `http://localhost:1337/` to start using the application
+9. Click the `Register` button to create your own account
 
 How to play
 ----------
