@@ -1,6 +1,8 @@
 # Capriccioso ♬
 
 A Makerthon Project by Deon, Rob, Aaron & George
+
+Play Capriccioso: https://capriciosso.herokuapp.com/
 ------------------
 
 During Week 9 of our Makers Academy experience we took part in our first hackathon. After picking a project we worked on it tirelessly for three days, presenting it to our cohort at the end. We came out with... Capriccioso!
@@ -57,7 +59,9 @@ The biggest challenges we faced in delivering the product were:
 
 Setup
 -----
-To run the app:
+App has been deployed to Heroku, so you can play it here: https://capriciosso.herokuapp.com/ 
+
+To run the app locally:
 
 1. Fork this repository and then clone it using `git clone <url>`
 2. cd into the project
